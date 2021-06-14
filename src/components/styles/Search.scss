@@ -1,0 +1,61 @@
+$navbarColor: #212125;
+
+.search-menu {
+  width: 100%;
+  height: 360px;
+  position: absolute;
+  top: 108px;
+  left: -100%;
+  opacity: 1;
+  transition: all 0.5s ease;
+
+  &.active {
+    background: $navbarColor;
+    mix-blend-mode: normal;
+    box-shadow: 0px 24px 35px 4px rgba(0, 0, 0, 0.2);
+    left: 0;
+    opacity: 1;
+    transition: all 0.5s ease;
+    z-index: 1;
+  }
+}
+
+.search-icon {
+  right: 140px;
+}
+
+.search-icon:hover path {
+  stroke: #fe3189;
+
+  &.active {
+    stroke: #fe3189;
+  }
+}
+
+.search-two {
+  position: relative;
+  left: -4px;
+  top: 3px;
+}
+
+@media screen and (max-width: 960px) {
+  .search-menu {
+    height: 370px;
+    top: 55px;
+  }
+  .search-icon {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+  }
+  .search-one {
+    width: 12.84px;
+    height: 12.84px;
+  }
+  .search-two {
+    width: 5.48px;
+    height: 5.48px;
+    left: -2px;
+    top: 2px;
+  }
+}
