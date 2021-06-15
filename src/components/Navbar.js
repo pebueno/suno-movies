@@ -6,7 +6,6 @@ import { ReactComponent as Collapsable } from "../images/Collapsable.svg";
 import "./styles/Navbar.scss";
 function Navbar() {
   const [click, setClick] = useState(false);
-
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
 
@@ -29,7 +28,7 @@ function Navbar() {
           </li>
           <li className="nav-item">
             <Link
-              to="/products"
+              to="/catalago"
               className="nav-links active"
               onClick={closeMobileMenu}
             >

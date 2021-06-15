@@ -1,0 +1,64 @@
+$secondColor: #fe3189;
+$fontColor: #eaeaea;
+.search-card {
+  opacity: 1;
+  border-color: aliceblue;
+  width: 302px;
+  height: 191px;
+  border: 1.07px solid #313136;
+  box-sizing: border-box;
+  border-radius: 5px;
+  text-decoration: none;
+
+  .movie-container {
+    text-align: left;
+    margin: 28px 0 0 0;
+    text-align: -webkit-center;
+    & td {
+      padding-right: 20px;
+    }
+    .movie-data {
+      display: flow-root;
+      padding-top: 0.5rem;
+
+      .movie-title {
+        font-size: 22px;
+        line-height: 33px;
+        color: $fontColor;
+      }
+      .movie-genre {
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 24px;
+        color: $secondColor;
+      }
+      .movie-rate {
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 24px;
+        color: $fontColor;
+
+        & .star {
+          width: 15.99px;
+          height: 14.84px;
+          position: relative;
+          top: 1px;
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+  .movie-image {
+    background-size: cover;
+    border-radius: 4px;
+    background-image: url("https://image.tmdb.org/t/p/w500//rTh4K5uw9HypmpGslcKd4QfHl93.jpg");
+    width: 98px;
+    height: 147px;
+  }
+}
+@media screen and (max-width: 960px) {
+  .search-card {
+    width: 322px;
+    height: 203.65px;
+  }
+}

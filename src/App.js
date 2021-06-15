@@ -36,7 +36,7 @@ import Navbar from "./components/Navbar";
 import "./App.scss";
 import Home from "./components/pages/Home";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Products from "./components/pages/Products";
+import Catalago from "./components/pages/Catalago";
 // import Search from "./components/pages/Search";
 
 function App() {
@@ -45,7 +45,7 @@ function App() {
       <Navbar />
       <Switch>
         <Route path="/" exact component={Home} />
-        <Route path="/products" component={Products} />
+        <Route path="/catalago" component={Catalago} />
         {/* <Route path="/search" component={Search} /> */}
       </Switch>
     </Router>
