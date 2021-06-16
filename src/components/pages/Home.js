@@ -2,13 +2,12 @@ import React, { useEffect, useState } from "react";
 
 import "../../App.scss";
 import "../styles/Featured.scss";
-// import { Featured } from "../Featured";
+import "../styles/Catalogo.scss";
+
 import { Link } from "react-router-dom";
+
 import { ReactComponent as Star } from "../../images/star.svg";
 import { ReactComponent as Ellipse } from "../../images/ellipse.svg";
-
-// import { ReactComponent as ArrowLeft } from "../../images/arrow-left.svg";
-// import { ReactComponent as ArrowRight } from "../../images/arrow-right.svg";
 import api from "../services/Api";
 import Carousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
@@ -29,22 +28,17 @@ export default function Home() {
     setData(response.data.results);
   });
 
+  //Propriedade do Carousel
   const responsive = {
     0: { items: 1 },
     568: { items: 2 },
     1024: { items: 4 },
   };
 
-  // slideNext = () =>
-  //   this.setState({ currentIndex: this.state.currentIndex + 1 });
-  // slidePrev = () =>
-  //   this.setState({ currentIndex: this.state.currentIndex - 1 });
-
   return (
     <>
-      <div className="background-image">
+      <section className="background-image">
         <div className="feature-container">
-          {/* <ArrowLeft className="arrow-left" /> */}
           <p className="feature-title">
             <Ellipse className="ellipse" />
             <strong>LANÇAMENTOS</strong> DA SEMANA{" "}
@@ -71,18 +65,28 @@ export default function Home() {
               </Link>
             ))}
           </Carousel>
-          {/* <ArrowRight className="arrow-right" /> */}
         </div>
-      </div>
-
-      {/* <Featured
-          img={getImage(movie.poster_path)}
-          title={movie.title}
-          overview={movie.overview}
-          average={movie.vote_average}
-          genre={movie.genres}
-        /> */}
-      <h1 className="home">HOME</h1>
+      </section>
+      <section className="catalogo">
+        <div className="catalogo-header">
+          <div className="header-container">
+            <p className="catalogo-title">
+              <Ellipse className="ellipse" />
+              <strong>Catálogo</strong> Completo{" "}
+            </p>
+          </div>
+        </div>
+        <div className="catalogo-container">
+          <select className="catalogo-filtro">
+            <option>por gênero</option>
+          </select>
+          <button className="catalogo-populares">mais populares</button>
+          <select className="catalogo-exibicao">
+            <option>em grid</option>
+            <option>em lista</option>
+          </select>
+        </div>
+      </section>
     </>
   );
 }

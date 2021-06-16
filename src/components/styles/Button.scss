@@ -8,7 +8,7 @@ $secondaryColor: #fe3189;
   font-size: 18px;
   color: #fff;
   cursor: pointer;
-  background-color: var($secondaryColor);
+  background-color: $secondaryColor;
 }
 
 .btn:hover {
@@ -17,6 +17,6 @@ $secondaryColor: #fe3189;
   background-color: transparent;
   color: #fff;
   border-radius: 4px;
-  border: 2px solid var($secondaryColor);
+  border: 2px solid $secondaryColor;
   transition: all 0.3s ease-out;
 }

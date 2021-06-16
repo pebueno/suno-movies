@@ -1,20 +1,12 @@
 $secondColor: #fe3189;
 $fontColor: #eaeaea;
 .background-image {
-  //   position: absolute;
-  //   left: calc(0 - 1920px / 2);
-  //   top: calc(34% - 702px / 2 + 4px);
   top: 0px;
   left: 0px;
   width: 100%;
   height: 702px;
   background-image: url(../../images/feature-background.png);
   background-size: contain;
-
-  // .alice-carousel__stage-item {
-  //   width: 218.53px;
-  //   height: 328.27px;
-  // }
 
   .feature-container {
     margin: 2rem 0;
@@ -31,7 +23,6 @@ $fontColor: #eaeaea;
       font-size: 22px;
       line-height: 33px;
       width: 70vw;
-      // justify-content: center;
       position: absolute;
       top: 30px;
       & .ellipse {
@@ -44,20 +35,12 @@ $fontColor: #eaeaea;
     }
     .alice-carousel {
       width: 70vw;
-      // height: 420px;
-      // justify-content: center;
-      // align-items: center;
-      // list-style: none;
       position: absolute;
       top: 90px;
-      // background-color: wheat;
-
       .alice-carousel__stage {
         .alice-carousel__stage-item * {
           border-radius: 4px;
-
           width: 218.53px;
-          // height: 422.13px;
           text-decoration: none;
           .movie-title {
             font-weight: 500;
@@ -97,65 +80,6 @@ $fontColor: #eaeaea;
       .alice-carousel__next-btn {
         text-align: end;
       }
-      // .alice-carousel__prev-btn-item
-
-      // .alice-carousel__next-btn
-      // .alice-carousel__next-btn-item
-
-      // .grid-movies {
-      //   display: grid;
-      //   grid-template-columns: repeat(4, 1fr);
-      //   grid-gap: 30px;
-      //   grid-auto-rows: 0px;
-
-      //   width: 210vh;
-      //   margin-right: 3rem;
-      //   list-style: none;
-      //   text-decoration: none;
-      //   // display: table;
-
-      //   .movie-card {
-      //     width: 218.53px;
-      //     height: 422.13px;
-      //     text-decoration: none;
-      //     //   display: block;
-      //     .movie-image {
-      //       // background-size: cover;
-      //       border-radius: 4px;
-      //       width: 98px;
-      //       height: 147px;
-      //     }
-      //     .movie-title {
-      //       font-weight: 500;
-      //       font-size: 22px;
-      //       line-height: 33px;
-      //       color: $fontColor;
-      //     }
-      //     .movie-genre {
-      //       font-weight: 300;
-      //       font-size: 16px;
-      //       line-height: 24px;
-      //       color: $secondColor;
-      //     }
-
-      //   }
-      // }
-
-      // .arrow-left,
-      // .arrow-right {
-      //   // display: block;
-      //   // width: 50px;
-      //   // height: 50px;
-      //   // position: relative;
-      //   // height: 420px;
-      //   float: left;
-      // }
-      // .arrow-right {
-      //   // right: 0;
-      //   float: right;
-      //   justify-content: end;
-      //   text-align: right;
-      // }
     }
   }
 }
