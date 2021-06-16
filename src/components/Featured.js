@@ -3,18 +3,24 @@ import "./styles/Featured.scss";
 import axios from "axios";
 import { ReactComponent as ArrowLeft } from "../images/arrow-left.svg";
 import { ReactComponent as ArrowRight } from "../images/arrow-right.svg";
-import { ReactComponent as Star } from "../images/star.svg";
-import { Link } from "react-router-dom";
 import { Carousel } from "./Carousel";
+// import { ReactComponent as Star } from "../images/star.svg";
+// import { Link } from "react-router-dom";
 
 // const api_key = process.env.REACT_APP_API_KEY;
 // const BASE_URL = "https://api.themoviedb.org/3";
 // import { ReactComponent as FeaturedBG } from "../images/feature-background.svg";
 
+// const api = axios.create({ baseURL: BASE_URL });
 export function Featured() {
-  //   const [data, setData] = useState([]);
+  // constructor(){
+  //     super();
+  //     api.get('/').then(res => {
+  //       console.log(res.data)
+  //     })
+  //   }
 
-  //   const api = axios.create({ baseURL: BASE_URL });
+  //   const [data, setData] = useState([]);
 
   //   const getUpcoming = api.get("movie/upcoming", {
   //     params: { api_key },
