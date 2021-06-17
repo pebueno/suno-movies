@@ -22,4 +22,4 @@ Se ainda não tem uma API do TMDB, adquira a sua aqui: [TMDB-signup](https://www
 
 ### Deployment
 
-O deploy será feito em breve na Vercel.
+O deploy será feito em breve na Vercel depois que alguns detalhes forem corrigidos.
