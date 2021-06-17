@@ -5,7 +5,7 @@ import { ReactComponent as Star } from "../images/star.svg";
 
 export default function Movie(props) {
   return (
-    <Link className="movie-card">
+    <Link className="movie-card" key={props.id} id={props.id}>
       <table>
         <tr>
           <td>

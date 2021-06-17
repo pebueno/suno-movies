@@ -10,7 +10,7 @@ import { ReactComponent as Star } from "../../images/star.svg";
 import { ReactComponent as Ellipse } from "../../images/ellipse.svg";
 import api from "../services/Api";
 import Carousel from "react-alice-carousel";
-import Movie from "../Movie";
+import Movie from "../MovieCard";
 import CatalogoHeader from "../CatalagoHeader";
 
 import "react-alice-carousel/lib/alice-carousel.css";
@@ -140,7 +140,12 @@ export default function Home() {
             buttonsDisabled={true}
           >
             {data.map((movie) => (
-              <Link className="movie-card" key={movie.id}>
+              <Link
+                className="movie-card"
+                key={movie.id}
+                id={movie.id}
+                to={"movie/" + movie.id}
+              >
                 <img
                   className="movie-image"
                   src={getImage(movie.poster_path)}
@@ -203,6 +208,8 @@ export default function Home() {
           <div className={className}>
             {movie.map((movie) => (
               <Movie
+                key={movie.id}
+                id={movie.id}
                 title={movie.title}
                 genre={HandleGenreName(movie.genre_ids)}
                 img_url={getImage(movie.poster_path)}

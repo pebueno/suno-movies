@@ -37,6 +37,8 @@ import "./App.scss";
 import Home from "./components/pages/Home";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Catalago from "./components/pages/Catalago";
+import Movie from "./components/pages/Movie";
+// /movie/${id}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=pt-BR
 // import Search from "./components/pages/Search";
 
 function App() {
@@ -46,6 +48,7 @@ function App() {
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/catalago" component={Catalago} />
+        <Route path="/movie/:id" component={Movie} />
         {/* <Route path="/search" component={Search} /> */}
       </Switch>
     </Router>
