@@ -1,6 +1,6 @@
 // import React from "react";
-import React, { useState, useEffect, useReducer } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import "../../App.scss";
 import "../styles/Movie.scss";
 import "../styles/Catalogo.scss";
@@ -9,32 +9,6 @@ import ReactPlayer from "react-player";
 import { ReactComponent as Star } from "../../images/star.svg";
 
 const api_key = process.env.REACT_APP_API_KEY;
-
-const initialState = {
-  loading: true,
-  error: "",
-  genres: {},
-};
-
-const reducer = (state, action) => {
-  console.log(action);
-  switch (action.type) {
-    case "FETCH_SUCCESS":
-      return {
-        loading: false,
-        genres: action.payload,
-        error: "",
-      };
-    case "FETCH_ERROR":
-      return {
-        loading: false,
-        genres: {},
-        error: "Error",
-      };
-    default:
-      return state;
-  }
-};
 
 export default function Movie() {
   const [movie, setMovie] = useState([]);

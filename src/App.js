@@ -33,13 +33,12 @@
 // export default App;
 import React from "react";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import "./App.scss";
 import Home from "./components/pages/Home";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Catalago from "./components/pages/Catalago";
 import Movie from "./components/pages/Movie";
-// /movie/${id}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=pt-BR
-// import Search from "./components/pages/Search";
 
 function App() {
   return (
@@ -51,6 +50,7 @@ function App() {
         <Route path="/movie/:id" component={Movie} />
         {/* <Route path="/search" component={Search} /> */}
       </Switch>
+      <Footer />
     </Router>
   );
 }
