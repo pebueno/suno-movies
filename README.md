@@ -18,7 +18,7 @@ Em, [http://localhost:3000](http://localhost:3000).
 ### `.env` para API
 
 Não esqueça de usar sua própria API Key (v3 auth) em um arquivo .env para executar o projeto.
-Se ainda não tem uma API do TMDB, adquira a sua aqui: [https://www.themoviedb.org/signup](TMDB-signup)
+Se ainda não tem uma API do TMDB, adquira a sua aqui: [TMDB-signup](https://www.themoviedb.org/signup)
 
 ### Deployment
 
