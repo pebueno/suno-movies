@@ -50,22 +50,16 @@ export default function Home() {
   // console.log(state);
   const [genres, setGenres] = useState([]);
   const [genre, setGenre] = useState();
-  // const [movie, setMovie] = useState([]);
+  const [movie, setMovie] = useState([]);
   const getUpcoming = api.get(
     "movie/upcoming?api_key=" + api_key + "&language=pt-BR"
   );
 
-  // const getByGenre = api.get(
-  //   "/discover/movie?api_key=" +
-  //     api_key +
-  //     "&language=pt-BR&with_genres=" +
-  //     genre
-  // );
-
   const fetchMovies = (genre) => {
-    // console.log("test");
     // make an API call here and update a state for movies
   };
+  // console.log(movie);
+
   useEffect(() => {
     api
       .get("genre/movie/list?api_key=" + api_key + "&language=pt-BR")
@@ -85,17 +79,11 @@ export default function Home() {
   const getImage = (path) => `https://image.tmdb.org/t/p/w500/${path}`;
 
   getUpcoming.then((response) => {
-    // console.log(response.data.results);
     setData(response.data.results);
+    if (genre === undefined) {
+      setMovie(response.data.results);
+    }
   });
-
-  // if (genre !== undefined) {
-  //   getByGenre.then((response) => {
-  //     // console.log(response.data.results);
-  //     setMovie(response.data.results);
-  //   });
-  // }
-  // console.log(movie);
 
   function HandleGenreName(event) {
     let genreData = [];
@@ -107,6 +95,28 @@ export default function Home() {
     });
     let generStr = `${genreData[0]}, ${genreData[1]}`;
     return generStr;
+  }
+
+  function filterByGenre(e) {
+    setGenre(e.id);
+    api
+      .get(
+        `/discover/movie?api_key=${api_key}&language=pt-BR&with_genres=${
+          e.id
+        }&page=1sc${
+          e.popularity
+            ? "&sort_by=popularity.desc"
+            : "&sort_by=vote_average.desc"
+        }`
+      )
+      .then((response) => {
+        setMovie(response.data.results);
+      })
+      .catch((error) => {
+        dispatch({
+          type: "FETCH_ERROR",
+        });
+      });
   }
 
   //Propriedade do Carousel
@@ -155,9 +165,12 @@ export default function Home() {
           <div className="catalogo-escolhas">
             <select
               className="catalogo-filtro"
-              onChange={(e) => setGenre(e.target.value)}
+              onChange={(e) =>
+                filterByGenre({ id: e.target.value, popularity: false })
+              }
+              value={genre}
             >
-              <option selected disabled>
+              <option selected disabled value="por gênero">
                 por gênero
               </option>
               {state.loading
@@ -175,7 +188,7 @@ export default function Home() {
             </select>
             <button
               className="catalogo-populares"
-              onClick={() => setClassName("grid")}
+              onClick={() => filterByGenre({ id: genre, popularity: true })}
             >
               mais populares
             </button>
@@ -188,7 +201,7 @@ export default function Home() {
             </select>
           </div>
           <div className={className}>
-            {data.map((movie) => (
+            {movie.map((movie) => (
               <Movie
                 title={movie.title}
                 genre={HandleGenreName(movie.genre_ids)}
