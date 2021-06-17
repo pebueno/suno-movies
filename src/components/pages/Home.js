@@ -41,10 +41,8 @@ const reducer = (state, action) => {
 };
 
 export default function Home() {
-  //Filmes mais recentes no banco de dados
   const [data, setData] = useState([]);
   const [className, setClassName] = useState("grid");
-  // const [getGenres, setGetGenres] = useState([]);
   const [state, dispatch] = useReducer(reducer, initialState);
   // console.log(state);
 
@@ -53,19 +51,9 @@ export default function Home() {
   );
 
   const fetchMovies = (genre) => {
-    // console.log(genre);
+    // console.log("test");
     // make an API call here and update a state for movies
   };
-  // const getGenreList = api.get("genre/movie/list", {
-  //   params: { api_key },
-  // });
-
-  // https://image.tmdb.org/t/p/w500/8ebc6b6a6b73261ffff682818879525d/movie/upcoming
-  // https://api.themoviedb.org/3/movie/upcoming?api_key=8ebc6b6a6b73261ffff682818879525d&language=pt-BR&page=1
-
-  //"&language=pt-BR"
-  //?api_key=8ebc6b6a6b73261ffff682818879525d
-
   useEffect(() => {
     api
       .get("genre/movie/list?api_key=" + api_key + "&language=pt-BR")
@@ -86,11 +74,6 @@ export default function Home() {
   getUpcoming.then((response) => {
     setData(response.data.results);
   });
-
-  // getGenreList.then((response) => {
-  //   setGetGenres(response.data.results);
-  // });
-  // const getGenre =
 
   //Propriedade do Carousel
   const responsive = {
@@ -155,7 +138,12 @@ export default function Home() {
                   ))}
               {state.error ? state.error : null}
             </select>
-            <button className="catalogo-populares">mais populares</button>
+            <button
+              className="catalogo-populares"
+              onClick={() => setClassName("grid")}
+            >
+              mais populares
+            </button>
             <select
               className="catalogo-exibicao"
               onChange={(e) => setClassName(e.target.value)}
@@ -163,20 +151,6 @@ export default function Home() {
               <option value="grid">em grid</option>
               <option value="list">em lista</option>
             </select>
-            {/* <button
-              className="view-btn list-view"
-              title="List View"
-              onClick={() => setClassName("list")}
-            >
-              List View
-            </button>
-            <button
-              className="view-btn list-view"
-              title="Grid View"
-              onClick={() => setClassName("grid")}
-            >
-              Grid View
-            </button> */}
           </div>
           <div className={className}>
             {data.map((movie) => (
@@ -191,13 +165,21 @@ export default function Home() {
                       />{" "}
                     </td>
                     <td className="movie-data">
-                      <p className="movie-title">{movie.title}</p>
+                      <p className="movie-title">
+                        {movie.title.length >= 24
+                          ? movie.title.substring(0, 24) + "..."
+                          : movie.title}
+                      </p>
                       <p className="movie-genre">{movie.genres_name}</p>
                       <p className="movie-rate">
                         <Star className="star" />
                         {movie.vote_average}
                       </p>
-                      <p className="movie-overview">{movie.overview}</p>
+                      <p className="movie-overview">
+                        {movie.overview.length >= 240
+                          ? movie.overview.substring(0, 240) + "..."
+                          : movie.overview}
+                      </p>
                     </td>
                   </tr>
                 </table>

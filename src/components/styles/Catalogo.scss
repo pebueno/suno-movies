@@ -64,6 +64,7 @@
         background: linear-gradient(180deg, #212125 0%, #2e2e35 100%), #212125;
       }
       .catalogo-populares {
+        cursor: pointer;
         margin: 0 1rem;
         width: 161px;
         height: 44.86px;
@@ -79,8 +80,12 @@
       }
 
       .catalogo-exibicao {
+        cursor: pointer;
         position: relative;
         float: right;
+      }
+      .catalogo-filtro {
+        cursor: pointer;
       }
     }
 
