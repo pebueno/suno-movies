@@ -45,7 +45,7 @@ export default function Home() {
   const [className, setClassName] = useState("grid");
   const [state, dispatch] = useReducer(reducer, initialState);
   // console.log(state);
-
+  const [genres, setGenres] = useState([]);
   const getUpcoming = api.get(
     "movie/upcoming?api_key=" + api_key + "&language=pt-BR"
   );
@@ -62,6 +62,7 @@ export default function Home() {
           type: "FETCH_SUCCESS",
           payload: response.data,
         });
+        setGenres(response.data.genres);
       })
       .catch((error) => {
         dispatch({
@@ -82,6 +83,18 @@ export default function Home() {
     1024: { items: 4 },
   };
 
+  function HandleGenreName(event) {
+    let genreData = [];
+    event.map((data) => {
+      const result = genres.find((genre) => genre.id === data);
+      if (result) {
+        genreData.push(result.name);
+      }
+    });
+    let generStr = `${genreData[0]}, ${genreData[1]}`;
+    return generStr;
+  }
+
   return (
     <>
       <section className="background-image">
@@ -97,14 +110,16 @@ export default function Home() {
             buttonsDisabled={true}
           >
             {data.map((movie) => (
-              <Link className="movie-card">
+              <Link className="movie-card" key={movie.id}>
                 <img
                   className="movie-image"
                   src={getImage(movie.poster_path)}
                   alt={movie.title}
                 />
                 <p className="movie-title">{movie.title}</p>
-                <p className="movie-genre">{movie.genres_name}</p>
+                <p className="movie-genre">
+                  {HandleGenreName(movie.genre_ids)}
+                </p>
                 <p className="movie-rate">
                   <Star className="star" />
                   {movie.vote_average}
@@ -170,7 +185,9 @@ export default function Home() {
                           ? movie.title.substring(0, 24) + "..."
                           : movie.title}
                       </p>
-                      <p className="movie-genre">{movie.genres_name}</p>
+                      <p className="movie-genre">
+                        {HandleGenreName(movie.genre_ids)}
+                      </p>
                       <p className="movie-rate">
                         <Star className="star" />
                         {movie.vote_average}
