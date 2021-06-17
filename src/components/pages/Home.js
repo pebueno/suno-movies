@@ -90,16 +90,14 @@ export default function Home() {
               <option>por gênero</option>
             </select>
             <button className="catalogo-populares">mais populares</button>
-            <select className="catalogo-exibicao">
-              <option
-                value="grid"
-                // onClick={ToggleClass}
-              >
-                em grid
-              </option>
+            <select
+              className="catalogo-exibicao"
+              onChange={(e) => setClassName(e.target.value)}
+            >
+              <option value="grid">em grid</option>
               <option value="list">em lista</option>
             </select>
-            <button
+            {/* <button
               className="view-btn list-view"
               title="List View"
               onClick={() => setClassName("list")}
@@ -112,12 +110,9 @@ export default function Home() {
               onClick={() => setClassName("grid")}
             >
               Grid View
-            </button>
+            </button> */}
           </div>
-          <div
-            // className={changeClass ? "grid" : "list"}
-            className={className}
-          >
+          <div className={className}>
             {data.map((movie) => (
               <Link className="movie-card">
                 <table>
