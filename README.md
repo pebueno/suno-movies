@@ -1,6 +1,6 @@
 # SUNO-MOVIES
 
-Esse projeto foi criado usando [Create React App].
+Esse projeto foi criado usando Create React App.
 
 ## Scripts disponíveis
 
@@ -13,12 +13,12 @@ Instale o projeto.
 ### `npm start`
 
 Projeto irá rodar usando o script padrão.
-Na porta 3000, [http://localhost:3000](http://localhost:3000).
+Em, [http://localhost:3000](http://localhost:3000).
 
-### `.ev` para API
+### `.env` para API
 
 Não esqueça de usar sua própria API Key (v3 auth) em um arquivo .env para executar o projeto.
-Se ainda não tem uma API do TMDB, adquira a sua aqui: [https://www.themoviedb.org/signup](https://www.themoviedb.org/signup)
+Se ainda não tem uma API do TMDB, adquira a sua aqui: [https://www.themoviedb.org/signup](TMDB-signup)
 
 ### Deployment
 
