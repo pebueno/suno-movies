@@ -10,6 +10,9 @@ import { ReactComponent as Star } from "../../images/star.svg";
 import { ReactComponent as Ellipse } from "../../images/ellipse.svg";
 import api from "../services/Api";
 import Carousel from "react-alice-carousel";
+import Movie from "../Movie";
+import CatalogoHeader from "../CatalagoHeader";
+
 import "react-alice-carousel/lib/alice-carousel.css";
 
 const api_key = process.env.REACT_APP_API_KEY;
@@ -46,8 +49,17 @@ export default function Home() {
   const [state, dispatch] = useReducer(reducer, initialState);
   // console.log(state);
   const [genres, setGenres] = useState([]);
+  const [genre, setGenre] = useState();
+
   const getUpcoming = api.get(
     "movie/upcoming?api_key=" + api_key + "&language=pt-BR"
+  );
+
+  const getByGenre = api.get(
+    "/discover/movie?api_key=" +
+      api_key +
+      "&language=pt-BR&with_genres=" +
+      genre
   );
 
   const fetchMovies = (genre) => {
@@ -76,13 +88,6 @@ export default function Home() {
     setData(response.data.results);
   });
 
-  //Propriedade do Carousel
-  const responsive = {
-    0: { items: 1 },
-    568: { items: 2 },
-    1024: { items: 4 },
-  };
-
   function HandleGenreName(event) {
     let genreData = [];
     event.map((data) => {
@@ -94,6 +99,13 @@ export default function Home() {
     let generStr = `${genreData[0]}, ${genreData[1]}`;
     return generStr;
   }
+
+  //Propriedade do Carousel
+  const responsive = {
+    0: { items: 1 },
+    568: { items: 2 },
+    1024: { items: 4 },
+  };
 
   return (
     <>
@@ -130,24 +142,24 @@ export default function Home() {
         </div>
       </section>
       <section className="catalogo">
-        <div className="catalogo-header">
-          <div className="header-container">
-            <p className="catalogo-title">
-              <Ellipse className="ellipse" />
-              <strong>Catálogo</strong> Completo{" "}
-            </p>
-          </div>
-        </div>
+        <CatalogoHeader />
         <div className="catalogo-container">
           <div className="catalogo-escolhas">
-            <select className="catalogo-filtro">
+            <select
+              className="catalogo-filtro"
+              onChange={(e) => setGenre(e.target.value)}
+            >
               <option selected disabled>
                 por gênero
               </option>
               {state.loading
                 ? "Loading"
                 : state.genres.genres.map((genre) => (
-                    <option key={genre.id} onClick={() => fetchMovies(genre)}>
+                    <option
+                      key={genre.id}
+                      value={genre.id}
+                      onClick={() => fetchMovies(genre)}
+                    >
                       {genre.name}
                     </option>
                   ))}
@@ -169,38 +181,13 @@ export default function Home() {
           </div>
           <div className={className}>
             {data.map((movie) => (
-              <Link className="movie-card">
-                <table>
-                  <tr>
-                    <td>
-                      <img
-                        className="movie-image"
-                        src={getImage(movie.poster_path)}
-                        alt={movie.title}
-                      />{" "}
-                    </td>
-                    <td className="movie-data">
-                      <p className="movie-title">
-                        {movie.title.length >= 24
-                          ? movie.title.substring(0, 24) + "..."
-                          : movie.title}
-                      </p>
-                      <p className="movie-genre">
-                        {HandleGenreName(movie.genre_ids)}
-                      </p>
-                      <p className="movie-rate">
-                        <Star className="star" />
-                        {movie.vote_average}
-                      </p>
-                      <p className="movie-overview">
-                        {movie.overview.length >= 240
-                          ? movie.overview.substring(0, 240) + "..."
-                          : movie.overview}
-                      </p>
-                    </td>
-                  </tr>
-                </table>
-              </Link>
+              <Movie
+                title={movie.title}
+                genre={movie.genre_ids}
+                img_url={getImage(movie.poster_path)}
+                overview={movie.overview}
+                vote_average={movie.vote_average}
+              />
             ))}
           </div>
         </div>
