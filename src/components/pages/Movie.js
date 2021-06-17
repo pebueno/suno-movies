@@ -5,7 +5,7 @@ import "../../App.scss";
 import "../styles/Movie.scss";
 import "../styles/Catalogo.scss";
 import api from "../services/Api";
-
+import ReactPlayer from "react-player";
 import { ReactComponent as Star } from "../../images/star.svg";
 
 const api_key = process.env.REACT_APP_API_KEY;
@@ -72,30 +72,39 @@ export default function Movie() {
       <section className="background-image">
         <div className="container">
           <div className="info">
-            <div>
+            <div className="info-top">
               <img
                 src={getImage(movie.poster_path)}
                 alt={`Capa do filme ${movie.title}`}
                 className="image"
               />
+              <div className="info-text">
+                <h1 className="title">{movie.title}</h1>
+                <div className="upper-text">
+                  <p className="genre">{genre}</p>
+                  <p className="rate">
+                    <Star className="star" />
+                    {movie.vote_average}
+                  </p>
+                </div>
+                <div className="lower-text">
+                  <h3 className="sinopse">Sinopse</h3>
+                  <p className="overview">{movie.overview}</p>
+                </div>
+              </div>
             </div>
-            <div className="info-text">
-              <h1 className="title">{movie.title}</h1>
-              <div className="upper-text">
-                <p className="genre">{genre}</p>
-                <p className="rate">
-                  <Star className="star" />
-                  {movie.vote_average}
-                </p>
-              </div>
-              <div className="lower-text">
-                <h3 className="sinopse">Sinopse</h3>
-                <p className="overview">{movie.overview}</p>
-              </div>
+            <h3 className="trailer-text">Trailer</h3>
+
+            <div className="trailer">
+              <ReactPlayer
+                className="video"
+                url={`https://www.youtube-nocookie.com/embed/${video}`}
+                width="100%"
+                height="579px"
+              />
             </div>
           </div>
         </div>
-        <h1 className="products">{id}</h1>
       </section>
     </>
   );
