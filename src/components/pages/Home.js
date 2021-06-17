@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-
+// import React, { useEffect, useState } from "react";
+import React, { useState, useEffect, useReducer } from "react";
 import "../../App.scss";
 import "../styles/Featured.scss";
 import "../styles/Catalogo.scss";
@@ -14,27 +14,83 @@ import "react-alice-carousel/lib/alice-carousel.css";
 
 const api_key = process.env.REACT_APP_API_KEY;
 
+const initialState = {
+  loading: true,
+  error: "",
+  genres: {},
+};
+
+const reducer = (state, action) => {
+  console.log(action);
+  switch (action.type) {
+    case "FETCH_SUCCESS":
+      return {
+        loading: false,
+        genres: action.payload,
+        error: "",
+      };
+    case "FETCH_ERROR":
+      return {
+        loading: false,
+        genres: {},
+        error: "Error",
+      };
+    default:
+      return state;
+  }
+};
+
 export default function Home() {
   //Filmes mais recentes no banco de dados
   const [data, setData] = useState([]);
-  // const [changeClass, setChangeClass] = useState("false");
-
-  // const ToggleClass = () => {
-  //   setChangeClass(!changeClass);
-  // };
-
   const [className, setClassName] = useState("grid");
+  // const [getGenres, setGetGenres] = useState([]);
+  const [state, dispatch] = useReducer(reducer, initialState);
+  // console.log(state);
 
-  const getUpcoming = api.get("movie/upcoming", {
-    params: { api_key },
-  });
+  const getUpcoming = api.get(
+    "movie/upcoming?api_key=" + api_key + "&language=pt-BR"
+  );
 
-  useEffect(() => {}, []);
+  const fetchMovies = (genre) => {
+    // console.log(genre);
+    // make an API call here and update a state for movies
+  };
+  // const getGenreList = api.get("genre/movie/list", {
+  //   params: { api_key },
+  // });
+
+  // https://image.tmdb.org/t/p/w500/8ebc6b6a6b73261ffff682818879525d/movie/upcoming
+  // https://api.themoviedb.org/3/movie/upcoming?api_key=8ebc6b6a6b73261ffff682818879525d&language=pt-BR&page=1
+
+  //"&language=pt-BR"
+  //?api_key=8ebc6b6a6b73261ffff682818879525d
+
+  useEffect(() => {
+    api
+      .get("genre/movie/list?api_key=" + api_key + "&language=pt-BR")
+      .then((response) => {
+        dispatch({
+          type: "FETCH_SUCCESS",
+          payload: response.data,
+        });
+      })
+      .catch((error) => {
+        dispatch({
+          type: "FETCH_ERROR",
+        });
+      });
+  }, []);
   const getImage = (path) => `https://image.tmdb.org/t/p/w500/${path}`;
 
   getUpcoming.then((response) => {
     setData(response.data.results);
   });
+
+  // getGenreList.then((response) => {
+  //   setGetGenres(response.data.results);
+  // });
+  // const getGenre =
 
   //Propriedade do Carousel
   const responsive = {
@@ -87,7 +143,17 @@ export default function Home() {
         <div className="catalogo-container">
           <div className="catalogo-escolhas">
             <select className="catalogo-filtro">
-              <option>por gênero</option>
+              <option selected disabled>
+                por gênero
+              </option>
+              {state.loading
+                ? "Loading"
+                : state.genres.genres.map((genre) => (
+                    <option key={genre.id} onClick={() => fetchMovies(genre)}>
+                      {genre.name}
+                    </option>
+                  ))}
+              {state.error ? state.error : null}
             </select>
             <button className="catalogo-populares">mais populares</button>
             <select
