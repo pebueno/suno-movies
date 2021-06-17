@@ -50,17 +50,17 @@ export default function Home() {
   // console.log(state);
   const [genres, setGenres] = useState([]);
   const [genre, setGenre] = useState();
-
+  // const [movie, setMovie] = useState([]);
   const getUpcoming = api.get(
     "movie/upcoming?api_key=" + api_key + "&language=pt-BR"
   );
 
-  const getByGenre = api.get(
-    "/discover/movie?api_key=" +
-      api_key +
-      "&language=pt-BR&with_genres=" +
-      genre
-  );
+  // const getByGenre = api.get(
+  //   "/discover/movie?api_key=" +
+  //     api_key +
+  //     "&language=pt-BR&with_genres=" +
+  //     genre
+  // );
 
   const fetchMovies = (genre) => {
     // console.log("test");
@@ -85,8 +85,17 @@ export default function Home() {
   const getImage = (path) => `https://image.tmdb.org/t/p/w500/${path}`;
 
   getUpcoming.then((response) => {
+    // console.log(response.data.results);
     setData(response.data.results);
   });
+
+  // if (genre !== undefined) {
+  //   getByGenre.then((response) => {
+  //     // console.log(response.data.results);
+  //     setMovie(response.data.results);
+  //   });
+  // }
+  // console.log(movie);
 
   function HandleGenreName(event) {
     let genreData = [];
@@ -106,7 +115,6 @@ export default function Home() {
     568: { items: 2 },
     1024: { items: 4 },
   };
-
   return (
     <>
       <section className="background-image">
@@ -183,7 +191,7 @@ export default function Home() {
             {data.map((movie) => (
               <Movie
                 title={movie.title}
-                genre={movie.genre_ids}
+                genre={HandleGenreName(movie.genre_ids)}
                 img_url={getImage(movie.poster_path)}
                 overview={movie.overview}
                 vote_average={movie.vote_average}
