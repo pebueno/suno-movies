@@ -33,7 +33,7 @@
 // export default App;
 import React from "react";
 import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
 import "./App.scss";
 import Home from "./components/pages/Home";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -50,7 +50,7 @@ function App() {
         <Route path="/movie/:id" component={Movie} />
         {/* <Route path="/search" component={Search} /> */}
       </Switch>
-      <Footer />
+      {/* <Footer /> */}
     </Router>
   );
 }

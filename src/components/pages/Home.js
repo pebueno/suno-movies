@@ -80,9 +80,9 @@ export default function Home() {
 
   getUpcoming.then((response) => {
     setData(response.data.results);
-    if (genre === undefined) {
-      setMovie(response.data.results);
-    }
+    // if (genre === undefined) {
+    //   setMovie(response.data.results);
+    // }
   });
 
   function HandleGenreName(event) {
@@ -168,35 +168,37 @@ export default function Home() {
         <CatalogoHeader />
         <div className="catalogo-container">
           <div className="catalogo-escolhas">
-            <select
-              className="catalogo-filtro"
-              onChange={(e) =>
-                filterByGenre({ id: e.target.value, popularity: false })
-              }
-              value={genre}
-            >
-              <option selected disabled value="por gênero">
-                por gênero
-              </option>
-              {state.loading
-                ? "Loading"
-                : state.genres.genres.map((genre) => (
-                    <option
-                      key={genre.id}
-                      value={genre.id}
-                      onClick={() => fetchMovies(genre)}
-                    >
-                      {genre.name}
-                    </option>
-                  ))}
-              {state.error ? state.error : null}
-            </select>
-            <button
-              className="catalogo-populares"
-              onClick={() => filterByGenre({ id: genre, popularity: true })}
-            >
-              mais populares
-            </button>
+            <div>
+              <select
+                className="catalogo-filtro"
+                onChange={(e) =>
+                  filterByGenre({ id: e.target.value, popularity: false })
+                }
+                value={genre}
+              >
+                <option selected disabled value="por gênero">
+                  por gênero
+                </option>
+                {state.loading
+                  ? "Loading"
+                  : state.genres.genres.map((genre) => (
+                      <option
+                        key={genre.id}
+                        value={genre.id}
+                        onClick={() => fetchMovies(genre)}
+                      >
+                        {genre.name}
+                      </option>
+                    ))}
+                {state.error ? state.error : null}
+              </select>
+              <button
+                className="catalogo-populares"
+                onClick={() => filterByGenre({ id: genre, popularity: true })}
+              >
+                mais populares
+              </button>
+            </div>
             <select
               className="catalogo-exibicao"
               onChange={(e) => setClassName(e.target.value)}

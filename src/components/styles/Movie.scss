@@ -110,3 +110,41 @@
     }
   }
 }
+@media screen and (max-width: 960px) {
+  .container {
+    .info {
+      width: 90%;
+      .info-top {
+        display: flex;
+        flex-direction: column;
+
+        grid-template-columns: none;
+        .image {
+          width: auto;
+          height: auto;
+        }
+
+        .info-text {
+          display: flex;
+          flex-direction: column;
+          text-align: initial;
+          width: 85vw;
+          .title {
+            font-weight: bold;
+            font-size: 42px;
+            line-height: 68px;
+          }
+          .genre {
+            font-size: 20px;
+          }
+          .lower-text .overview {
+            font-size: 15px;
+          }
+        }
+      }
+    }
+    .trailer .video {
+      height: 250px;
+    }
+  }
+}

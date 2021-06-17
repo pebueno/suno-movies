@@ -96,6 +96,9 @@ $fontColor: #eaeaea;
 @media screen and (max-width: 960px) {
   .background-image {
     background-image: none;
+    .feature-container .feature-title {
+      top: 0px;
+    }
   }
 }
 // @media screen and (max-width: 460px) {
