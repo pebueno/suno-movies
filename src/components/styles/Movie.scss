@@ -142,9 +142,17 @@
           }
         }
       }
+      .trailer {
+        border-top: transparent;
+      }
+      .trailer .video {
+        height: 250px;
+      }
     }
-    .trailer .video {
-      height: 250px;
+    .trailer-text {
+      padding-bottom: 8px;
+      width: 95px;
+      border-bottom: 0.6px solid #fe3189;
     }
   }
 }

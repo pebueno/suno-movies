@@ -44,13 +44,17 @@ function App() {
   return (
     <Router>
       <Navbar />
+      {/* <div className="page-container">
+        <div className="content-wrap"> */}
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/catalago" component={Catalago} />
         <Route path="/movie/:id" component={Movie} />
         {/* <Route path="/search" component={Search} /> */}
       </Switch>
+      {/* </div> */}
       {/* <Footer /> */}
+      {/* </div> */}
     </Router>
   );
 }

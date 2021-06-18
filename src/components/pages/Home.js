@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 
 import { ReactComponent as Star } from "../../images/star.svg";
 import { ReactComponent as Ellipse } from "../../images/ellipse.svg";
+
 import api from "../services/Api";
 import Carousel from "react-alice-carousel";
 import Movie from "../MovieCard";
@@ -168,7 +169,7 @@ export default function Home() {
         <CatalogoHeader />
         <div className="catalogo-container">
           <div className="catalogo-escolhas">
-            <div>
+            <div className="grupo-filtros">
               <select
                 className="catalogo-filtro"
                 onChange={(e) =>
@@ -199,13 +200,15 @@ export default function Home() {
                 mais populares
               </button>
             </div>
-            <select
-              className="catalogo-exibicao"
-              onChange={(e) => setClassName(e.target.value)}
-            >
-              <option value="grid">em grid</option>
-              <option value="list">em lista</option>
-            </select>
+            <div className="catalogo-fullscreen">
+              <select
+                className="catalogo-exibicao"
+                onChange={(e) => setClassName(e.target.value)}
+              >
+                <option value="grid">em grid</option>
+                <option value="list">em lista</option>
+              </select>
+            </div>
           </div>
           <div className={className}>
             {movie.map((movie) => (
