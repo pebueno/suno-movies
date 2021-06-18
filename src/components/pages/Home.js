@@ -53,7 +53,6 @@ export default function Home() {
   const [genres, setGenres] = useState([]);
   const [genre, setGenre] = useState();
   const [movie, setMovie] = useState([]);
-  // const [width, setWidth] = useState(0);
   const [width, setWidth] = React.useState(window.innerWidth);
   const breakpoint = 620;
 
@@ -67,7 +66,7 @@ export default function Home() {
   // console.log(movie);
 
   useEffect(() => {
-    // setWidth(window.innerWidth);
+    loadDefaultMovies();
     window.addEventListener("resize", () => setWidth(window.innerWidth));
     api
       .get("genre/movie/list?api_key=" + api_key + "&language=pt-BR")
@@ -88,11 +87,22 @@ export default function Home() {
 
   getUpcoming.then((response) => {
     setData(response.data.results);
-    // if (genre === undefined) {
-    //   setMovie(response.data.results);
-    // }
   });
 
+  function loadDefaultMovies() {
+    api
+      .get(
+        `/discover/movie?api_key=${api_key}&language=pt-BR&with_genres=10751&page=1sc`
+      )
+      .then((response) => {
+        setMovie(response.data.results);
+      })
+      .catch((error) => {
+        dispatch({
+          type: "FETCH_ERROR",
+        });
+      });
+  }
   function HandleGenreName(event) {
     let genreData = [];
     event.map((data) => {
@@ -106,25 +116,27 @@ export default function Home() {
   }
 
   function filterByGenre(e) {
-    setGenre(e.id);
-    api
-      .get(
-        `/discover/movie?api_key=${api_key}&language=pt-BR&with_genres=${
-          e.id
-        }&page=1sc${
-          e.popularity
-            ? "&sort_by=popularity.desc"
-            : "&sort_by=vote_average.desc"
-        }`
-      )
-      .then((response) => {
-        setMovie(response.data.results);
-      })
-      .catch((error) => {
-        dispatch({
-          type: "FETCH_ERROR",
+    if (e.id !== undefined) {
+      setGenre(e.id);
+      api
+        .get(
+          `/discover/movie?api_key=${api_key}&language=pt-BR&with_genres=${
+            e.id
+          }&page=1sc${
+            e.popularity
+              ? "&sort_by=popularity.desc"
+              : "&sort_by=vote_average.desc"
+          }`
+        )
+        .then((response) => {
+          setMovie(response.data.results);
+        })
+        .catch((error) => {
+          dispatch({
+            type: "FETCH_ERROR",
+          });
         });
-      });
+    }
   }
 
   //Propriedade do Carousel
