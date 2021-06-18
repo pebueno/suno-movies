@@ -13,7 +13,7 @@ export default function Movie(props) {
     >
       <table>
         <tr>
-          <td>
+          <td className="table-image">
             <img
               className="movie-image"
               src={props.img_url}

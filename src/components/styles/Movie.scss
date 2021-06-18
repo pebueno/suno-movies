@@ -6,8 +6,6 @@
   flex-direction: column;
   .info {
     padding: 2rem 0;
-
-    // justify-content: center;
     width: 50vw;
     display: flex;
     flex-direction: column;
@@ -61,7 +59,6 @@
           }
         }
         .lower-text {
-          // text-align: right;
           text-align: left;
 
           .sinopse {
@@ -75,10 +72,7 @@
             font-weight: normal;
             font-size: 22px;
             line-height: 140.5%;
-            /* or 31px */
-
             display: flex;
-
             color: #757575;
           }
         }
@@ -94,22 +88,22 @@
     }
     .trailer {
       border-top: 3px solid #fe3189;
-
-      //   width: 1035px;
       height: 719px;
       justify-content: center;
       text-align: center;
       display: flex;
       .video {
         padding-top: 2rem;
-        // width: 100%;
-
-        // width: 1033px;
         height: 579px;
       }
     }
   }
 }
+
+.background-image {
+  margin-bottom: 4.5rem;
+}
+
 @media screen and (max-width: 960px) {
   .container {
     .info {

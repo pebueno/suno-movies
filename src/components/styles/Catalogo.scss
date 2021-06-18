@@ -119,6 +119,12 @@
         background-position-x: 20px;
       }
     }
+    .load-more {
+      padding: 6.5rem 0 7rem 0;
+      .load-btn {
+        text-transform: lowercase;
+      }
+    }
   }
 
   .grid {
@@ -130,7 +136,6 @@
   .list {
     display: flex;
     flex-direction: column;
-    // grid-template-columns: repeat(2, 1fr);
     grid-gap: 60px;
     max-width: 60vw;
   }
@@ -144,6 +149,9 @@
       font-weight: normal;
       font-size: 21.1549px;
       line-height: 32px;
+    }
+    .table-image {
+      width: 157px;
     }
     .movie-image {
       width: 156.74px;
@@ -194,15 +202,12 @@
     }
     .catalogo-container {
       .catalogo-escolhas {
-        // display: grid;
         width: 100%;
         .grupo-filtros {
-          // position: relative;
           display: grid;
           grid-template-columns: repeat(2, 1fr) !important;
         }
         .catalogo-fullscreen {
-          // width: 0px;
           display: none;
         }
       }
@@ -212,6 +217,9 @@
         grid-template-columns: none;
         grid-gap: 60px;
         width: 92vw;
+      }
+      .load-more {
+        padding: 13rem 0 4.5rem 0;
       }
     }
   }

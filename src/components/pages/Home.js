@@ -11,8 +11,9 @@ import { ReactComponent as Ellipse } from "../../images/ellipse.svg";
 
 import api from "../services/Api";
 import Carousel from "react-alice-carousel";
-import Movie from "../MovieCard";
 import CatalogoHeader from "../CatalagoHeader";
+import Movie from "../MovieCard";
+import MovieMobile from "../MovieMobile";
 
 import "react-alice-carousel/lib/alice-carousel.css";
 
@@ -52,6 +53,10 @@ export default function Home() {
   const [genres, setGenres] = useState([]);
   const [genre, setGenre] = useState();
   const [movie, setMovie] = useState([]);
+  // const [width, setWidth] = useState(0);
+  const [width, setWidth] = React.useState(window.innerWidth);
+  const breakpoint = 620;
+
   const getUpcoming = api.get(
     "movie/upcoming?api_key=" + api_key + "&language=pt-BR"
   );
@@ -62,6 +67,8 @@ export default function Home() {
   // console.log(movie);
 
   useEffect(() => {
+    // setWidth(window.innerWidth);
+    window.addEventListener("resize", () => setWidth(window.innerWidth));
     api
       .get("genre/movie/list?api_key=" + api_key + "&language=pt-BR")
       .then((response) => {
@@ -211,17 +218,32 @@ export default function Home() {
             </div>
           </div>
           <div className={className}>
-            {movie.map((movie) => (
-              <Movie
-                key={movie.id}
-                id={movie.id}
-                title={movie.title}
-                genre={HandleGenreName(movie.genre_ids)}
-                img_url={getImage(movie.poster_path)}
-                overview={movie.overview}
-                vote_average={movie.vote_average}
-              />
-            ))}
+            {movie.map((movie) => {
+              return width > breakpoint ? (
+                <Movie
+                  key={movie.id}
+                  id={movie.id}
+                  title={movie.title}
+                  genre={HandleGenreName(movie.genre_ids)}
+                  img_url={getImage(movie.poster_path)}
+                  overview={movie.overview}
+                  vote_average={movie.vote_average}
+                />
+              ) : (
+                <MovieMobile
+                  key={movie.id}
+                  id={movie.id}
+                  title={movie.title}
+                  genre={HandleGenreName(movie.genre_ids)}
+                  img_url={getImage(movie.poster_path)}
+                  overview={movie.overview}
+                  vote_average={movie.vote_average}
+                />
+              );
+            })}
+          </div>
+          <div className="load-more">
+            <button className="load-btn">Carregar mais</button>
           </div>
         </div>
       </section>
