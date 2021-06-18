@@ -173,7 +173,7 @@ export default function Home() {
                 />
                 <p className="movie-title">
                   {movie.title.length >= 17
-                    ? movie.title.substring(0, 16) + "..."
+                    ? movie.title.substring(0, 1) + "..."
                     : movie.title}
                 </p>
                 <p className="movie-genre">
