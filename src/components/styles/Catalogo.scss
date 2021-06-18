@@ -140,16 +140,11 @@
     max-width: 60vw;
   }
   .movie-card {
-    width: 494.25px;
+    // width: 494.25px;
     height: 250.97px;
     text-decoration: none;
     color: #eaeaea;
     display: contents;
-    .movie-title {
-      font-weight: normal;
-      font-size: 21.1549px;
-      line-height: 32px;
-    }
     .table-image {
       width: 157px;
     }
@@ -158,34 +153,43 @@
       height: 231.74px;
       margin-right: 2rem;
     }
-    .movie-overview {
-      font-weight: 300;
-      font-size: 12.5006px;
-      line-height: 19px;
-      color: #9f9fa0;
-    }
-    .movie-genre {
-      font-weight: 300;
-      font-size: 15.3854px;
-      line-height: 23px;
-      display: flex;
-      align-items: center;
-      padding-bottom: 1rem;
-      color: #fe3189;
-    }
+    .movie-data {
+      text-align: initial;
+      display: block;
+      .movie-title {
+        font-weight: normal;
+        font-size: 21.1549px;
+        line-height: 32px;
+      }
+      .movie-overview {
+        font-weight: 300;
+        font-size: 12.5006px;
+        line-height: 19px;
+        color: #9f9fa0;
+      }
+      .movie-genre {
+        font-weight: 300;
+        font-size: 15.3854px;
+        line-height: 23px;
+        display: flex;
+        align-items: center;
+        padding-bottom: 1rem;
+        color: #fe3189;
+      }
 
-    .movie-rate {
-      font-weight: normal;
-      font-size: 16px;
-      line-height: 24px;
-      color: #eaeaea;
+      .movie-rate {
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 24px;
+        color: #eaeaea;
 
-      & .star {
-        width: 15.99px;
-        height: 14.84px;
-        position: relative;
-        top: 1px;
-        margin-right: 10px;
+        & .star {
+          width: 15.99px;
+          height: 14.84px;
+          position: relative;
+          top: 1px;
+          margin-right: 10px;
+        }
       }
     }
   }

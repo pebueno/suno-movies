@@ -7,6 +7,7 @@ import "../styles/Catalogo.scss";
 import api from "../services/Api";
 import ReactPlayer from "react-player";
 import { ReactComponent as Star } from "../../images/star.svg";
+import { Link } from "react-router-dom";
 
 const api_key = process.env.REACT_APP_API_KEY;
 
@@ -77,6 +78,11 @@ export default function Movie() {
                 height="579px"
               />
             </div>
+          </div>
+          <div className="go-back">
+            <Link to={"../"}>
+              <button>voltar</button>
+            </Link>
           </div>
         </div>
       </section>

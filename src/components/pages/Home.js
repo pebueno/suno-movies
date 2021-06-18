@@ -171,7 +171,11 @@ export default function Home() {
                   src={getImage(movie.poster_path)}
                   alt={movie.title}
                 />
-                <p className="movie-title">{movie.title}</p>
+                <p className="movie-title">
+                  {movie.title.length >= 17
+                    ? movie.title.substring(0, 16) + "..."
+                    : movie.title}
+                </p>
                 <p className="movie-genre">
                   {HandleGenreName(movie.genre_ids)}
                 </p>
