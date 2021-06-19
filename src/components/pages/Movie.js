@@ -44,6 +44,7 @@ export default function Movie() {
   });
   return (
     <>
+      <div id="page-mask"></div>
       <section className="background-image">
         <div className="container">
           <div className="info">

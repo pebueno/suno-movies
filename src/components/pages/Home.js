@@ -147,6 +147,7 @@ export default function Home() {
   };
   return (
     <>
+      <div id="page-mask"></div>
       <section className="background-image">
         <div className="feature-container">
           <p className="feature-title">
@@ -172,8 +173,8 @@ export default function Home() {
                   alt={movie.title}
                 />
                 <p className="movie-title">
-                  {movie.title.length >= 17
-                    ? movie.title.substring(0, 1) + "..."
+                  {movie.title.length >= 16
+                    ? movie.title.substring(0, 16) + "..."
                     : movie.title}
                 </p>
                 <p className="movie-genre">

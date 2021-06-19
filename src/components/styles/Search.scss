@@ -1,28 +1,14 @@
 $navbarColor: #212125;
 $secondColor: #fe3189;
 $fontColor: #eaeaea;
-.background {
-  width: 100%;
-  position: absolute;
-  top: 107px;
-  left: 0;
-  height: 100vh;
-  transition: all 0.5s ease;
-  &.active {
-    background: rgba(24, 24, 28, 0.95);
-    transition: all 0.5s ease;
-  }
-}
-
 .search-menu {
   display: flex;
   flex-direction: column;
   width: 100%;
   min-height: 360px;
   position: absolute;
-  top: 2px;
+  top: 110px;
   left: -100%;
-  // opacity: 1;
   transition: all 0.5s ease;
   text-align: center;
   align-items: center;
@@ -33,7 +19,7 @@ $fontColor: #eaeaea;
     box-shadow: 0px 24px 35px 4px rgba(0, 0, 0, 0.3);
     left: 0;
     opacity: 1;
-    z-index: 1;
+    z-index: 2;
     transition: all 0.5s ease;
 
     & form {
@@ -103,9 +89,7 @@ $fontColor: #eaeaea;
 @media screen and (max-width: 960px) {
   .search-menu {
     height: 370px;
-    top: 1px;
-    // display: flex;
-    // flex-direction: column;
+    top: 56px;
     &.active {
       & form {
         margin: 1.3rem 0;

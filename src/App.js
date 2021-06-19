@@ -50,7 +50,6 @@ function App() {
         <Route path="/" exact component={Home} />
         <Route path="/catalago" component={Catalago} />
         <Route path="/movie/:id" component={Movie} />
-        {/* <Route path="/search" component={Search} /> */}
       </Switch>
       {/* </div> */}
       {/* <Footer /> */}

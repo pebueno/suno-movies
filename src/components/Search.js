@@ -8,15 +8,28 @@ import api from "./services/Api";
 const api_key = process.env.REACT_APP_API_KEY;
 
 export function Search() {
-  const handleClick = () => setClick(!click);
   const [click, setClick] = useState(false);
   const [genres, setGenres] = useState([]);
   const [search, setSearch] = useState("");
   const [data, setData] = useState([]);
 
+  function handleClick() {
+    if (click === false) {
+      document.getElementById("page-mask").style.display = "block";
+    } else {
+      document.getElementById("page-mask").style.display = "none";
+    }
+    setClick(!click);
+  }
+
   function handleChange(event) {
+    if (event.target.value === undefined) {
+      setData([]);
+    } else {
+    }
     setSearch(event.target.value);
   }
+  // console.log(search);
   function HandleGenreName(event) {
     let genreData = [];
     event.map((data) => {
@@ -63,6 +76,7 @@ export function Search() {
           <form>
             <input
               name="movieName"
+              autocomplete="off"
               onChange={handleChange}
               value={search.movieName}
             />
