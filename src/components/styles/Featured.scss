@@ -16,7 +16,7 @@ $fontColor: #eaeaea;
     height: 100%;
     align-items: center;
     justify-content: center;
-    position: absolute;
+    // position: absolute;
 
     .feature-title {
       font-weight: 300;
@@ -99,6 +99,7 @@ $fontColor: #eaeaea;
 @media screen and (max-width: 960px) {
   .background-image {
     background-image: none;
+    height: 552px;
     .feature-container .feature-title {
       top: 0px;
     }

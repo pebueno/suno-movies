@@ -41,7 +41,7 @@ export function Search() {
   }
   function HandleGenreName(event) {
     let genreData = [];
-    event.map((data) => {
+    event.forEach((data) => {
       const result = genres.find((genre) => genre.id === data);
       if (result) {
         genreData.push(result.name);
@@ -57,7 +57,12 @@ export function Search() {
       search +
       "&sort_by=popularity.desc&include_adult=false"
   );
-  const getImage = (path) => `https://image.tmdb.org/t/p/w500/${path}`;
+
+  function getImage(path) {
+    if (path !== undefined) {
+      return `https://image.tmdb.org/t/p/w500/${path}`;
+    }
+  }
 
   useEffect(() => {
     api
@@ -89,7 +94,7 @@ export function Search() {
             <input
               id="movieName"
               name="movieName"
-              autocomplete="off"
+              autoComplete="off"
               onChange={handleChange}
               value={search.movieName}
             />

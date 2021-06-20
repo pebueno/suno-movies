@@ -54,6 +54,8 @@ export default function Home() {
   const [genre, setGenre] = useState();
   const [movie, setMovie] = useState([]);
   const [width, setWidth] = React.useState(window.innerWidth);
+  // const [cutMovies, setCutMovies] = useState([]);
+
   const breakpoint = 620;
 
   const getUpcoming = api.get(
@@ -83,7 +85,12 @@ export default function Home() {
         });
       });
   }, []);
-  const getImage = (path) => `https://image.tmdb.org/t/p/w500/${path}`;
+
+  function getImage(path) {
+    if (path !== undefined) {
+      return `https://image.tmdb.org/t/p/w500/${path}`;
+    }
+  }
 
   getUpcoming.then((response) => {
     setData(response.data.results);
@@ -103,9 +110,10 @@ export default function Home() {
         });
       });
   }
+
   function HandleGenreName(event) {
     let genreData = [];
-    event.map((data) => {
+    event.forEach((data) => {
       const result = genres.find((genre) => genre.id === data);
       if (result) {
         genreData.push(result.name);
