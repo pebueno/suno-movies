@@ -72,10 +72,11 @@ $fontColor: #eaeaea;
 .search-icon {
   right: 140px;
 }
-
+.search-active path {
+  stroke: $secondColor;
+}
 .search-icon:hover path {
   stroke: $secondColor;
-
   &.active {
     stroke: $secondColor;
   }

@@ -83,9 +83,6 @@ export default function Catalago() {
       loadMovies();
     }
   }
-  console.log(count);
-  console.log(cutMovies);
-  console.log(page);
 
   function checkGenre() {
     if (genre !== undefined) {

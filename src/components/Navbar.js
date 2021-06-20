@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Search } from "./Search";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { ReactComponent as Collapsable } from "../images/Collapsable.svg";
-
 import "./styles/Navbar.scss";
+
 function Navbar() {
   const [click, setClick] = useState(false);
   function handleClick() {
@@ -20,28 +20,35 @@ function Navbar() {
   return (
     <>
       <nav className="navbar">
-        <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
+        <NavLink to="/" className="navbar-logo" onClick={closeMobileMenu}>
           <p>
             SUNO<span>MOVIES</span>
           </p>
-        </Link>
+        </NavLink>
         <div className="menu-icon" onClick={handleClick}>
           <Collapsable className={click ? null : "collapsable"} />
         </div>
         <ul className={click ? "nav-menu active" : "nav-menu"}>
           <li className="nav-item">
-            <Link to="/" className="nav-links" onClick={closeMobileMenu}>
+            <NavLink
+              to="/"
+              className="nav-links"
+              activeClassName="selected"
+              exact={true}
+              onClick={closeMobileMenu}
+            >
               <p>INÍCIO</p>
-            </Link>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <Link
+            <NavLink
               to="/catalago"
-              className="nav-links active"
+              className="nav-links"
+              activeClassName="selected"
               onClick={closeMobileMenu}
             >
               <p>CATÁLOGO</p>
-            </Link>
+            </NavLink>
           </li>
         </ul>
         <Search />
