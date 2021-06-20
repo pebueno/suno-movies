@@ -6,8 +6,8 @@ $fontColor: #eaeaea;
   width: 100%;
   height: 702px;
   background-image: url(../../images/feature-background.png);
-  background-size: contain;
-
+  background-size: cover;
+  background-position: center;
   .feature-container {
     margin: 2rem 0;
     display: flex;
@@ -76,8 +76,9 @@ $fontColor: #eaeaea;
       .alice-carousel__prev-btn,
       .alice-carousel__next-btn {
         font-size: 75px;
-        position: relative;
-        top: -350px;
+        position: absolute;
+        top: 140px;
+        width: fit-content;
       }
       .alice-carousel__prev-btn-item,
       .alice-carousel__next-btn-item {
@@ -85,9 +86,11 @@ $fontColor: #eaeaea;
       }
       .alice-carousel__prev-btn {
         text-align: inherit;
+        left: -3.5rem;
       }
       .alice-carousel__next-btn {
         text-align: end;
+        right: -3.5rem;
       }
     }
   }
@@ -101,10 +104,3 @@ $fontColor: #eaeaea;
     }
   }
 }
-// @media screen and (max-width: 460px) {
-//   .arrow-left,
-//   .arrow-right {
-//     width: 90px;
-//     height: 90px;
-//   }
-// }

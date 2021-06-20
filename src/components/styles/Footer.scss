@@ -8,11 +8,11 @@ footer {
   position: absolute;
   bottom: -30px;
   width: 100%;
-
+  z-index: 2;
   .footer-text {
     font-weight: normal;
     font-size: 18px;
     line-height: 27px;
-    width: 90vw;
+    width: 100%;
   }
 }

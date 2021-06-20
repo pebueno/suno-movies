@@ -155,6 +155,7 @@ export default function Home() {
             <strong>LANÇAMENTOS</strong> DA SEMANA{" "}
           </p>
           <Carousel
+            mouseTracking
             responsive={responsive}
             controlsStrategy="alternate"
             disableDotsControls

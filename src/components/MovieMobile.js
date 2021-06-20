@@ -13,7 +13,7 @@ export default function MovieMobile(props) {
       key={props.id}
       id={props.id}
     >
-      <section className="background-image">
+      <section className="background-image" style={{ marginBottom: "9rem" }}>
         <div className="container">
           <div className="info">
             <div className="info-top">

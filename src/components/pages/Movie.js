@@ -45,8 +45,9 @@ export default function Movie() {
   return (
     <>
       <div id="page-mask"></div>
-      <section className="background-image">
+      <div className="content-wrap">
         <div className="container">
+          <div id="cinema-img"></div>
           <div className="info">
             <div className="info-top">
               <img
@@ -70,23 +71,22 @@ export default function Movie() {
               </div>
             </div>
             <h3 className="trailer-text">Trailer</h3>
-
             <div className="trailer">
               <ReactPlayer
                 className="video"
                 url={`https://www.youtube-nocookie.com/embed/${video}`}
                 width="100%"
-                height="579px"
+                height="450px"
               />
             </div>
-          </div>
-          <div className="go-back">
-            <Link to={"../"}>
-              <button>voltar</button>
-            </Link>
+            <div className="go-back">
+              <Link to={"../"}>
+                <button>voltar</button>
+              </Link>
+            </div>
           </div>
         </div>
-      </section>
+      </div>
     </>
   );
 }

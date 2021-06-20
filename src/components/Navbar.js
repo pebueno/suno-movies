@@ -6,7 +6,15 @@ import { ReactComponent as Collapsable } from "../images/Collapsable.svg";
 import "./styles/Navbar.scss";
 function Navbar() {
   const [click, setClick] = useState(false);
-  const handleClick = () => setClick(!click);
+  function handleClick() {
+    if (click === false) {
+      document.getElementById("page-mask").style.display = "block";
+    } else {
+      document.getElementById("page-mask").style.display = "none";
+    }
+    setClick(!click);
+  }
+
   const closeMobileMenu = () => setClick(false);
 
   return (

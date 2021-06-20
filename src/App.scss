@@ -35,12 +35,17 @@ html {
   color: #fff;
 }
 
-.page-container {
+// .page-container {
+//   position: relative;
+//   min-height: 100vh;
+//   .content-wrap {
+//     padding-bottom: 112px; /* Footer height */
+//   }
+// }
+
+.content-wrap {
+  min-height: 100%;
   position: relative;
-  min-height: 100vh;
-  .content-wrap {
-    padding-bottom: 112px; /* Footer height */
-  }
 }
 
 #page-mask {

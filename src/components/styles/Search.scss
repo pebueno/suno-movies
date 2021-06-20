@@ -21,7 +21,8 @@ $fontColor: #eaeaea;
     opacity: 1;
     z-index: 2;
     transition: all 0.5s ease;
-
+    height: auto;
+    padding-bottom: 2.5rem;
     & form {
       position: relative;
       left: 0px;

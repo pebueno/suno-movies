@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./styles/Search.scss";
-import { Link } from "react-router-dom";
+import "./styles/SearchCard.scss";
+
+import { Link, useHistory } from "react-router-dom";
 import { SearchCard } from "./SearchCard";
 import { ReactComponent as SearchOne } from "../images/search1.svg";
 import { ReactComponent as SearchTwo } from "../images/search2.svg";
@@ -12,6 +14,7 @@ export function Search() {
   const [genres, setGenres] = useState([]);
   const [search, setSearch] = useState("");
   const [data, setData] = useState([]);
+  const history = useHistory();
 
   function handleClick() {
     if (click === false) {
@@ -22,14 +25,20 @@ export function Search() {
     setClick(!click);
   }
 
-  function handleChange(event) {
-    if (event.target.value === undefined) {
-      setData([]);
-    } else {
-    }
-    setSearch(event.target.value);
+  const closeSearchMenu = () => setClick(false);
+  function eraseSearchInput() {
+    setData([]);
+    document.getElementById("movieName").value = "";
   }
-  // console.log(search);
+
+  function handleChange(event) {
+    if (event.target.value !== "") {
+      setSearch(event.target.value);
+      searchMovies.then((response) => {
+        setData(response.data.results);
+      });
+    }
+  }
   function HandleGenreName(event) {
     let genreData = [];
     event.map((data) => {
@@ -46,13 +55,10 @@ export function Search() {
       api_key +
       "&language=pt-BR&query=" +
       search +
-      "&include_adult=false"
+      "&sort_by=popularity.desc&include_adult=false"
   );
   const getImage = (path) => `https://image.tmdb.org/t/p/w500/${path}`;
 
-  searchMovies.then((response) => {
-    setData(response.data.results);
-  });
   useEffect(() => {
     api
       .get("genre/movie/list?api_key=" + api_key + "&language=pt-BR")
@@ -65,7 +71,13 @@ export function Search() {
   }, []);
   return (
     <div>
-      <div className="search-icon" onClick={handleClick}>
+      <div
+        className="search-icon"
+        onClick={() => {
+          handleClick();
+          eraseSearchInput();
+        }}
+      >
         <Link className={click ? null : "search"}>
           <SearchOne className="search-one" />
           <SearchTwo className="search-two" />
@@ -75,6 +87,7 @@ export function Search() {
         <div className={click ? "search-menu active" : "search-menu"}>
           <form>
             <input
+              id="movieName"
               name="movieName"
               autocomplete="off"
               onChange={handleChange}
@@ -83,14 +96,28 @@ export function Search() {
           </form>
           <div className="search-result">
             {data.map((movie, i) => (
-              <SearchCard
+              <Link
+                className="search-card"
+                // to={"movie/" + movie.id}
+                // replace
                 key={movie.id}
                 id={movie.id}
-                title={movie.title}
-                genre={HandleGenreName(movie.genre_ids)}
-                img_url={getImage(movie.poster_path)}
-                vote_average={movie.vote_average}
-              />
+                onClick={() => {
+                  closeSearchMenu();
+                  eraseSearchInput();
+                  history.push("movie/" + movie.id, { from: "Home" });
+                  history.push(movie.id, { from: "Movie" });
+                }}
+              >
+                <SearchCard
+                  key={movie.id}
+                  id={movie.id}
+                  title={movie.title}
+                  genre={HandleGenreName(movie.genre_ids)}
+                  img_url={getImage(movie.poster_path)}
+                  vote_average={movie.vote_average}
+                />
+              </Link>
             ))}
           </div>
         </div>

@@ -33,7 +33,7 @@
 // export default App;
 import React from "react";
 import Navbar from "./components/Navbar";
-// import Footer from "./components/Footer";
+import Footer from "./components/Footer";
 import "./App.scss";
 import Home from "./components/pages/Home";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -44,16 +44,16 @@ function App() {
   return (
     <Router>
       <Navbar />
-      {/* <div className="page-container">
-        <div className="content-wrap"> */}
-      <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/catalago" component={Catalago} />
-        <Route path="/movie/:id" component={Movie} />
-      </Switch>
-      {/* </div> */}
-      {/* <Footer /> */}
-      {/* </div> */}
+      {/* <div className="page-container"> */}
+      <div className="content-wrap">
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/catalago" component={Catalago} />
+          <Route path="/movie/:id" component={Movie} />
+        </Switch>
+        {/* </div> */}
+        <Footer />
+      </div>
     </Router>
   );
 }

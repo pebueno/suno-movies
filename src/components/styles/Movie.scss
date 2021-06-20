@@ -19,7 +19,6 @@
         width: 334px;
         height: 494px;
       }
-
       .info-text {
         display: flex;
         flex-direction: column;
@@ -88,8 +87,8 @@
     }
     .trailer {
       border-top: 3px solid #fe3189;
-      height: 719px;
-      // height: 640px;
+      // height: 719px;
+      height: 469px;
       justify-content: center;
       text-align: center;
       display: flex;
@@ -118,25 +117,66 @@
     }
   }
 }
+#cinema-img {
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 702px;
+  background-image: url(../../images/feature-background.png);
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  z-index: -1;
+}
+// .player-wrapper {
+//   position: relative;
+//   padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
+// }
 
-.background-image {
-  margin-bottom: 4.5rem;
+// .react-player {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+// }
+// .trailer-container {
+//   align-items: center;
+//   justify-content: center;
+//   display: flex;
+//   text-align: center;
+//   flex-direction: column;
+// }
+// #trailer-part {
+// display: flex;
+// position: relative;
+// height: 100%;
+// position: relative;
+// padding-top: 16.25%; /* Player ratio: 100 / (1280 / 720) */
+// }
+@media screen and (max-width: 460px) {
+  #cinema-img {
+    background-image: none;
+  }
 }
 
 @media screen and (max-width: 960px) {
   .container {
+    .go-back {
+      & button {
+        display: table-footer-group;
+        margin-bottom: 7rem;
+      }
+    }
     .info {
       width: 90%;
       .info-top {
         display: flex;
         flex-direction: column;
-
         grid-template-columns: none;
+        align-items: center;
         .image {
-          width: auto;
-          height: auto;
+          max-width: 370;
+          max-height: 540px;
         }
-
         .info-text {
           display: flex;
           flex-direction: column;
@@ -157,6 +197,7 @@
       }
       .trailer {
         border-top: transparent;
+        height: unset;
       }
       .trailer .video {
         height: 250px;
