@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Search } from "./Search";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { ReactComponent as Collapsable } from "../images/Collapsable.svg";
 import "./styles/Navbar.scss";
 
