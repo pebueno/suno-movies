@@ -13,13 +13,13 @@ Instale o projeto.
 ### `npm start`
 
 Projeto irá rodar usando o script padrão.
-Em, [http://localhost:3000](http://localhost:3000).
+Em [http://localhost:3000](http://localhost:3000).
 
 ### `.env` para API
 
 Não esqueça de usar sua própria API Key (v3 auth) em um arquivo .env para executar o projeto.
-Se ainda não tem uma API do TMDB, adquira a sua aqui: [TMDB-signup](https://www.themoviedb.org/signup)
+Se ainda não tem uma chave do TMDB, adquira a sua em [TMDB-signup](https://www.themoviedb.org/signup)
 
 ### Deployment
 
-O deploy será feito em breve na Vercel depois que alguns detalhes forem corrigidos.
+https://suno-movies-eight.vercel.app/
