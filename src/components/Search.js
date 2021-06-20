@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./styles/Search.scss";
 import "./styles/SearchCard.scss";
 
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { SearchCard } from "./SearchCard";
 import { ReactComponent as SearchOne } from "../images/search1.svg";
 import { ReactComponent as SearchTwo } from "../images/search2.svg";
@@ -14,7 +14,6 @@ export function Search() {
   const [genres, setGenres] = useState([]);
   const [search, setSearch] = useState("");
   const [data, setData] = useState([]);
-  const history = useHistory();
 
   function handleClick() {
     if (click === false) {
@@ -25,7 +24,6 @@ export function Search() {
     setClick(!click);
   }
 
-  const closeSearchMenu = () => setClick(false);
   function eraseSearchInput() {
     setData([]);
     document.getElementById("movieName").value = "";
@@ -103,15 +101,13 @@ export function Search() {
             {data.map((movie, i) => (
               <Link
                 className="search-card"
-                // to={"movie/" + movie.id}
-                // replace
+                to={"../movie/" + movie.id}
+                replace
                 key={movie.id}
                 id={movie.id}
                 onClick={() => {
-                  closeSearchMenu();
+                  handleClick();
                   eraseSearchInput();
-                  history.push("movie/" + movie.id, { from: "Home" });
-                  history.push(movie.id, { from: "Movie" });
                 }}
               >
                 <SearchCard

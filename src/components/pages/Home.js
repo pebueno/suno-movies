@@ -49,10 +49,13 @@ export default function Home() {
   const [data, setData] = useState([]);
   const [className, setClassName] = useState("grid");
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [cutMovies, setCutMovies] = useState([]);
   // console.log(state);
   const [genres, setGenres] = useState([]);
   const [genre, setGenre] = useState();
   const [movie, setMovie] = useState([]);
+  const [count, setCount] = useState(0);
+  const [page, setPage] = useState(0);
   const [width, setWidth] = React.useState(window.innerWidth);
   // const [cutMovies, setCutMovies] = useState([]);
 
@@ -95,7 +98,44 @@ export default function Home() {
   getUpcoming.then((response) => {
     setData(response.data.results);
   });
-
+  function increase() {
+    if (count < 3) {
+      setCount(count + 1);
+      let min = count * 6;
+      let max = (1 + count) * 6;
+      let newMoviesArray = movie.slice(min, max);
+      Array.prototype.push.apply(cutMovies, newMoviesArray);
+    } else if (count === 3) {
+      let newMoviesArray = movie.slice(18, 20);
+      Array.prototype.push.apply(cutMovies, newMoviesArray);
+      setCount(0);
+      loadMovies();
+    }
+  }
+  function checkGenre() {
+    if (genre !== undefined) {
+      return genre;
+    } else {
+      return 10751;
+    }
+  }
+  function loadMovies() {
+    api
+      .get(
+        `/discover/movie?api_key=${api_key}&language=pt-BR&with_genres=${checkGenre()}&page=${
+          page + 1
+        }`
+      )
+      .then((response) => {
+        setMovie(response.data.results);
+      })
+      .catch((error) => {
+        dispatch({
+          type: "FETCH_ERROR",
+        });
+      });
+    setPage(page + 1);
+  }
   function loadDefaultMovies() {
     api
       .get(
@@ -103,6 +143,11 @@ export default function Home() {
       )
       .then((response) => {
         setMovie(response.data.results);
+        let cutResult = response.data.results;
+        cutResult = cutResult.slice(0, 6);
+        setCutMovies(cutResult);
+        setCount(1);
+        setPage(1);
       })
       .catch((error) => {
         dispatch({
@@ -138,6 +183,13 @@ export default function Home() {
         )
         .then((response) => {
           setMovie(response.data.results);
+          cutMovies.length = 0;
+          setCount(1);
+          setPage(1);
+          increase();
+          let cutResult = response.data.results;
+          cutResult = cutResult.slice(0, 6);
+          setCutMovies(cutResult);
         })
         .catch((error) => {
           dispatch({
@@ -219,7 +271,10 @@ export default function Home() {
                       <option
                         key={genre.id}
                         value={genre.id}
-                        onClick={() => fetchMovies(genre)}
+                        onClick={() => {
+                          setPage(0);
+                          fetchMovies(genre);
+                        }}
                       >
                         {genre.name}
                       </option>
@@ -228,7 +283,10 @@ export default function Home() {
               </select>
               <button
                 className="catalogo-populares"
-                onClick={() => filterByGenre({ id: genre, popularity: true })}
+                onClick={() => {
+                  filterByGenre({ id: genre, popularity: true });
+                  setPage(0);
+                }}
               >
                 mais populares
               </button>
@@ -244,7 +302,7 @@ export default function Home() {
             </div>
           </div>
           <div className={className}>
-            {movie.map((movie) => {
+            {cutMovies.map((movie) => {
               return width > breakpoint ? (
                 <Movie
                   key={movie.id}
@@ -269,7 +327,9 @@ export default function Home() {
             })}
           </div>
           <div className="load-more">
-            <button className="load-btn">Carregar mais</button>
+            <button className="load-btn" onClick={increase}>
+              Carregar mais
+            </button>
           </div>
         </div>
       </section>
