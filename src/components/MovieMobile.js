@@ -17,7 +17,15 @@ export default function MovieMobile(props) {
         <div className="container">
           <div className="info">
             <div className="info-top">
-              <img className="image" src={props.img_url} alt={props.title} />{" "}
+              <img
+                className="image"
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = "https://i.imgur.com/F0VhXaw.png";
+                }}
+                src={props.img_url}
+                alt={props.title}
+              />{" "}
               <div className="info-text">
                 <p className="title">
                   {props.title.length >= 12

@@ -52,6 +52,10 @@ export default function Movie() {
             <div className="info-top">
               <img
                 src={getImage(movie.poster_path)}
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = "https://i.imgur.com/F0VhXaw.png";
+                }}
                 alt={`Capa do filme ${movie.title}`}
                 className="image"
               />

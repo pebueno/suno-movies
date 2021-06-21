@@ -12,6 +12,10 @@ export function SearchCard(props) {
               className="movie-image"
               src={props.img_url}
               alt={props.title}
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = "https://i.imgur.com/F0VhXaw.png";
+              }}
             />
           </td>
           <td className="movie-data">

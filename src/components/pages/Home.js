@@ -158,13 +158,20 @@ export default function Home() {
 
   function HandleGenreName(event) {
     let genreData = [];
-    event.forEach((data) => {
+    event.forEach((data, i) => {
       const result = genres.find((genre) => genre.id === data);
       if (result) {
         genreData.push(result.name);
       }
     });
-    let generStr = `${genreData[0]}, ${genreData[1]}`;
+    function notUndefined() {
+      if (genreData[1] === undefined) {
+        return genreData[0];
+      } else {
+        return genreData[0] + ", " + genreData[1];
+      }
+    }
+    let generStr = `${notUndefined()}`;
     return generStr;
   }
 
@@ -231,11 +238,15 @@ export default function Home() {
                 <img
                   className="movie-image"
                   src={getImage(movie.poster_path)}
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = "https://i.imgur.com/F0VhXaw.png";
+                  }}
                   alt={movie.title}
                 />
                 <p className="movie-title">
                   {movie.title.length >= 16
-                    ? movie.title.substring(0, 16) + "..."
+                    ? movie.title.substring(0, 14) + "..."
                     : movie.title}
                 </p>
                 <p className="movie-genre">
