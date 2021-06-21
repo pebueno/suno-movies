@@ -165,7 +165,9 @@ export default function Home() {
       }
     });
     function notUndefined() {
-      if (genreData[1] === undefined) {
+      if (genreData[0] === undefined) {
+        return "";
+      } else if (genreData[1] === undefined) {
         return genreData[0];
       } else {
         return genreData[0] + ", " + genreData[1];

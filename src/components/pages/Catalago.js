@@ -137,7 +137,16 @@ export default function Catalago() {
         genreData.push(result.name);
       }
     });
-    let generStr = `${genreData[0]}, ${genreData[1]}`;
+    function notUndefined() {
+      if (genreData[0] === undefined) {
+        return "";
+      } else if (genreData[1] === undefined) {
+        return genreData[0];
+      } else {
+        return genreData[0] + ", " + genreData[1];
+      }
+    }
+    let generStr = `${notUndefined()}`;
     return generStr;
   }
 
