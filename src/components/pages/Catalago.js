@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useReducer } from "react";
 import "../../App.scss";
 import "../styles/Catalogo.scss";
-
 import api from "../services/Api";
 import Movie from "../MovieCard";
 import MovieMobile from "../MovieMobile";

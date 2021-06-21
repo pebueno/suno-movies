@@ -1,13 +1,12 @@
 // import React from "react";
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import "../../App.scss";
 import "../styles/Movie.scss";
 import "../styles/Catalogo.scss";
 import api from "../services/Api";
 import ReactPlayer from "react-player";
 import { ReactComponent as Star } from "../../images/star.svg";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const api_key = process.env.REACT_APP_API_KEY;
 
@@ -16,7 +15,6 @@ export default function Movie() {
   const [genre, setGenre] = useState([]);
   const [video, setVideo] = useState();
   const { id } = useParams();
-  // console.log(id);
 
   const getImage = (path) => `https://image.tmdb.org/t/p/w500/${path}`;
 
@@ -35,7 +33,6 @@ export default function Movie() {
     api
       .get(`/movie/${id}/videos?api_key=${api_key}&language=pt-BR`)
       .then(function (response) {
-        // console.log(response.data.results[0].key)
         setVideo(response.data.results[0].key);
       })
       .catch(function (error) {
@@ -84,7 +81,7 @@ export default function Movie() {
               />
             </div>
             <div className="go-back">
-              <Link to={"../"}>
+              <Link to={"../"} style={{ textDecoration: "none" }}>
                 <button>voltar</button>
               </Link>
             </div>

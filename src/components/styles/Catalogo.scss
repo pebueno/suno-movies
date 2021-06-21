@@ -31,11 +31,7 @@
       width: 45vw;
       height: 75px;
       text-transform: uppercase;
-      //   position: absolute;
-      //   top: 30px;
-
       .catalogo-title {
-        // padding: 0 2rem;
         font-weight: 300;
         font-size: 22px;
         line-height: 33px;
@@ -66,23 +62,7 @@
 
       .grupo-filtros {
         text-align: left;
-        // display: grid;
         flex-direction: row;
-        // .catalogo-populares {
-        //   cursor: pointer;
-        //   margin: 0 1rem;
-        //   width: 161px;
-        //   height: 44.86px;
-        //   font-weight: 600;
-        //   font-size: 14.4179px;
-        //   line-height: 22px;
-        //   color: #eaeaea;
-        //   border: 2px solid #fe3189;
-        //   filter: drop-shadow(0px 0px 6px #ff0772);
-        //   background: linear-gradient(180deg, #fe3189 0%, #fe3189 100%), #fe3189;
-        //   mix-blend-mode: normal;
-        //   border-radius: 3.20398px;
-        // }
         .catalogo-filtro {
           cursor: pointer;
         }
@@ -96,8 +76,6 @@
         .catalogo-exibicao {
           cursor: pointer;
           display: block;
-          // position: absolute;
-          // right: 370px;
         }
       }
 
@@ -140,7 +118,6 @@
     max-width: 60vw;
   }
   .movie-card {
-    // width: 494.25px;
     height: 250.97px;
     text-decoration: none;
     color: #eaeaea;
@@ -217,6 +194,8 @@
     .catalogo-container {
       .catalogo-escolhas {
         width: 100%;
+        height: 0;
+        margin: 2rem;
         .grupo-filtros {
           display: grid;
           grid-template-columns: repeat(2, 1fr) !important;
@@ -234,6 +213,29 @@
       }
       .load-more {
         padding: 13rem 0 4.5rem 0;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .container .info .info-top {
+    padding-top: 10px;
+  }
+  .catalogo .catalogo-container .catalogo-escolhas {
+    margin: 0px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .catalogo .catalogo-container .catalogo-escolhas {
+    height: 100px;
+    width: 50vw;
+    .grupo-filtros {
+      display: block;
+      grid-template-columns: none;
+      .catalogo-filtro {
+        margin: 1.3rem 0;
       }
     }
   }

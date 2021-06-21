@@ -1,0 +1,44 @@
+$secondColor: #fe3189;
+
+.container {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  .info {
+    padding: 2rem 0;
+    width: 45vw;
+    display: flex;
+    flex-direction: column;
+    grid-gap: 30px;
+    #oops {
+      font-size: 3.5rem;
+    }
+    #sinto-muito {
+      font-size: 1.5rem;
+    }
+    & svg path {
+      fill: $secondColor;
+    }
+    .go-back {
+      padding-top: 2rem;
+      padding-bottom: 7rem;
+    }
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .container .info {
+    width: 85vw;
+    #oops {
+      font-size: 2.5rem;
+    }
+    #sinto-muito {
+      font-size: 1.2rem;
+    }
+    .go-back {
+      padding-bottom: 0;
+    }
+  }
+}

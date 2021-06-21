@@ -18,8 +18,6 @@ export function Search() {
   function handleClick() {
     if (click === false) {
       document.getElementById("page-mask").style.display = "block";
-      // let element = document.getElementsByClassName("search path");
-      // element.classList.add("search-active");
     } else {
       document.getElementById("page-mask").style.display = "none";
     }

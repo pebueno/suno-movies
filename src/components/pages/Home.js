@@ -1,21 +1,16 @@
-// import React, { useEffect, useState } from "react";
 import React, { useState, useEffect, useReducer } from "react";
 import "../../App.scss";
 import "../styles/Featured.scss";
 import "../styles/Catalogo.scss";
-
-import { Link } from "react-router-dom";
-
-import { ReactComponent as Star } from "../../images/star.svg";
-import { ReactComponent as Ellipse } from "../../images/ellipse.svg";
-
+import "react-alice-carousel/lib/alice-carousel.css";
 import api from "../services/Api";
+import { Link } from "react-router-dom";
 import Carousel from "react-alice-carousel";
 import CatalogoHeader from "../CatalagoHeader";
 import Movie from "../MovieCard";
 import MovieMobile from "../MovieMobile";
-
-import "react-alice-carousel/lib/alice-carousel.css";
+import { ReactComponent as Star } from "../../images/star.svg";
+import { ReactComponent as Ellipse } from "../../images/ellipse.svg";
 
 const api_key = process.env.REACT_APP_API_KEY;
 
@@ -50,14 +45,12 @@ export default function Home() {
   const [className, setClassName] = useState("grid");
   const [state, dispatch] = useReducer(reducer, initialState);
   const [cutMovies, setCutMovies] = useState([]);
-  // console.log(state);
   const [genres, setGenres] = useState([]);
   const [genre, setGenre] = useState();
   const [movie, setMovie] = useState([]);
   const [count, setCount] = useState(0);
   const [page, setPage] = useState(0);
   const [width, setWidth] = React.useState(window.innerWidth);
-  // const [cutMovies, setCutMovies] = useState([]);
 
   const breakpoint = 620;
 
@@ -68,7 +61,6 @@ export default function Home() {
   const fetchMovies = (genre) => {
     // make an API call here and update a state for movies
   };
-  // console.log(movie);
 
   useEffect(() => {
     loadDefaultMovies();

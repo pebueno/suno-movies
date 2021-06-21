@@ -1,5 +1,4 @@
 import React from "react";
-// import "./styles/Catalogo.scss";
 import "./styles/Movie.scss";
 
 import { Link } from "react-router-dom";
@@ -29,7 +28,7 @@ export default function MovieMobile(props) {
               <div className="info-text">
                 <p className="title">
                   {props.title.length >= 12
-                    ? props.title.substring(0, 12) + "..."
+                    ? props.title.substring(0, 11) + "..."
                     : props.title}
                 </p>
                 <div className="upper-text">
