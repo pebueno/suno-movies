@@ -1,5 +1,7 @@
 # SUNO-MOVIES
 
+<p align="center"><img align="center" src="https://media0.giphy.com/media/LnW2QRZZIYjaj4QeD9/giphy.gif?cid=790b7611a3516f0d2b09171088845003fd0506086bf9636b&rid=giphy.gif&ct=g" width="480" height="225"/></p>
+
 Esse projeto foi criado usando Create React App.
 
 ## Scripts disponíveis
@@ -12,8 +14,7 @@ Instale o projeto.
 
 ### `npm start`
 
-Projeto irá rodar usando o script padrão.
-Em [http://localhost:3000](http://localhost:3000).
+Projeto irá rodar usando o script padrão em [http://localhost:3000](http://localhost:3000).
 
 ### `.env` para API
 
